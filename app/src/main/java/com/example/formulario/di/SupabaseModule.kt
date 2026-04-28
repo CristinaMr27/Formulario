@@ -1,6 +1,6 @@
 package com.example.formulario.di
 
-import com.example.formulario.data.repository.SolicitudRepository
+import com.example.formulario.data.repository.RequestRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,11 +30,9 @@ object SupabaseModule {
 
     @Provides
     @Singleton
-    fun provideSolicitudRepository(
+    fun provideRequestRepository(
         supabaseClient: SupabaseClient
-    ): SolicitudRepository {
-        return SolicitudRepository(supabaseClient)
+    ): RequestRepository {
+        return RequestRepository(supabaseClient)
     }
 }
-
-

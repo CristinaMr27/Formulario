@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
     <resources>
-        <string name="app_name">Solicitudes App</string>
+        <string name="app_name">Requests App</string>
 
-        <string name="titulo_label">Título (5–60 caracteres)</string>
-        <string name="descripcion_label">Descripción (20–500 caracteres)</string>
-        <string name="categoria_label">Categoría</string>
-        <string name="prioridad_label">Prioridad</string>
-        <string name="email_label">Email</string>
-        <string name="enviar_button">Enviar</string>
-        <string name="mis_solicitudes_button">Mis solicitudes</string>
-        <string name="enviando">Enviando…</string>
+        <string name="titulo_label">Title (5–60 characters)</string>
+        <string name="descripcion_label">Description (20–500 characters)</string>
+        <string name="categoria_label">Category</string>
+        <string name="prioridad_label">Priority</string>
+        <string name="enviar_button">Submit</string>
+        <string name="mis_solicitudes_button">All Requests</string>
+        <string name="enviando">Sending…</string>
     </resources>

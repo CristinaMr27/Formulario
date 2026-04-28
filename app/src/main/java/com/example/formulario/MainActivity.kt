@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.formulario.presentation.screens.solicitud_screen.SolicitudScreen
+import com.example.formulario.ui.navigation.AppNavHost
 import com.example.formulario.ui.theme.FormularioTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SolicitudScreen()
+                    AppNavHost()
                 }
             }
         }
