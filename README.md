@@ -6,14 +6,6 @@ Aplicación Android de gestión de solicitudes (requests) construida con Jetpack
 
 [Ver video demo](https://everisgroup-my.sharepoint.com/:v:/g/personal/cmoninor_emeal_nttdata_com/IQA8I96Evml_RLG8JK72MumPAYhjA3QMFexpX9aTb7JomNI?e=2az6o6)
 
-## 🚀 Configuración del Proyecto
-
-### Prerrequisitos
-
-- Android Studio (última versión recomendada)
-- JDK 11 o superior
-- Una cuenta de Supabase
-
 ### Configuración de Supabase
 
 1. **Crea un proyecto en Supabase**
@@ -63,47 +55,6 @@ Aplicación Android de gestión de solicitudes (requests) construida con Jetpack
 - **Base de datos**: Supabase (PostgreSQL)
 - **Navegación**: Jetpack Navigation Compose
 
-## 📁 Estructura del Proyecto
 
-```
-app/
-├── data/
-│   ├── model/          # Modelos de datos
-│   └── repository/     # Repositorios para acceso a datos
-├── di/                 # Módulos de inyección de dependencias
-├── domain/
-│   └── validation/     # Lógica de validación
-├── ui/
-│   ├── navigation/     # Configuración de navegación
-│   ├── screens/        # Pantallas de la app
-│   └── theme/          # Tema y estilos
-└── util/               # Utilidades
-```
-
-## 🔒 Seguridad
-
-Las credenciales de Supabase se almacenan de forma segura en `local.properties`, que:
-- ✅ NO se sube a GitHub (está en `.gitignore`)
-- ✅ Se carga en tiempo de compilación
-- ✅ No aparece en el código fuente
-
-**Para colaboradores**: Cada desarrollador debe crear su propio archivo `local.properties` usando `local.properties.example` como plantilla.
-
-## 🤝 Contribuir
-
-1. Fork el proyecto
-2. Crea tu rama de feature (`git checkout -b feature/AmazingFeature`)
-3. Configura tu `local.properties` con tus propias credenciales
-4. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-5. Push a la rama (`git push origin feature/AmazingFeature`)
-6. Abre un Pull Request
-
-## 📝 Notas
-
-- Nunca compartas tu archivo `local.properties`
-- Si accidentalmente expones tus credenciales, regenera inmediatamente tu API key desde Supabase Dashboard
-- Considera implementar Row Level Security (RLS) en Supabase para mayor seguridad
-
-## 📄 Licencia
 
 Este proyecto es de código abierto y está disponible bajo la licencia MIT.
