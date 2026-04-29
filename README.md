@@ -29,7 +29,7 @@ Aplicación Android de gestión de solicitudes (requests) construida con Jetpack
    SUPABASE_KEY=tu_clave_anon_de_supabase
    ```
 
-   ⚠️ **IMPORTANTE**: El archivo `local.properties` está en `.gitignore` y NO se subirá a GitHub. Esto protege tus credenciales.
+   ⚠️ **IMPORTANTE**: El archivo `local.properties` está en `.gitignore` y NO se subirá a GitHub.
 
 ### Instalación
 
@@ -54,7 +54,3 @@ Aplicación Android de gestión de solicitudes (requests) construida con Jetpack
 - **Inyección de dependencias**: Dagger Hilt
 - **Base de datos**: Supabase (PostgreSQL)
 - **Navegación**: Jetpack Navigation Compose
-
-
-
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
