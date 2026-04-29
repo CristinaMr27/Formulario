@@ -29,6 +29,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.formulario.R
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.formulario.data.model.FormState
@@ -55,12 +57,12 @@ fun RequestForm(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("New Request") },
+                title = { Text(stringResource(R.string.new_request)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Go back"
+                            contentDescription = stringResource(R.string.go_back)
                         )
                     }
                 }
@@ -100,11 +102,11 @@ fun RequestForm(
                         OutlinedTextField(
                             value = formState.title,
                             onValueChange = onTitleChange,
-                            label = { Text("Title") },
+                            label = { Text(stringResource(R.string.title_label)) },
                             isError = formState.title.isNotEmpty() && !isTitleValid,
                             supportingText = {
                                 if (formState.title.isNotEmpty() && !isTitleValid) {
-                                    Text("Must be between 5 and 60 characters")
+                                    Text(stringResource(R.string.title_validation))
                                 }
                             },
                             modifier = Modifier.fillMaxWidth(),
@@ -114,11 +116,11 @@ fun RequestForm(
                         OutlinedTextField(
                             value = formState.description,
                             onValueChange = onDescriptionChange,
-                            label = { Text("Description") },
+                            label = { Text(stringResource(R.string.description_label)) },
                             isError = formState.description.isNotEmpty() && !isDescriptionValid,
                             supportingText = {
                                 if (formState.description.isNotEmpty() && !isDescriptionValid) {
-                                    Text("Must be between 20 and 500 characters")
+                                    Text(stringResource(R.string.description_validation))
                                 }
                             },
                             modifier = Modifier
@@ -140,11 +142,11 @@ fun RequestForm(
                         OutlinedTextField(
                             value = formState.email,
                             onValueChange = onEmailChange,
-                            label = { Text("Email") },
+                            label = { Text(stringResource(R.string.email_label)) },
                             isError = formState.email.isNotEmpty() && !isEmailValid,
                             supportingText = {
                                 if (formState.email.isNotEmpty() && !isEmailValid) {
-                                    Text("Please enter a valid email")
+                                    Text(stringResource(R.string.email_validation))
                                 }
                             },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -175,7 +177,7 @@ fun RequestForm(
                                 .height(50.dp),
                             shape = RoundedCornerShape(18.dp)
                         ) {
-                            Text(if (formState.isLoading) "Sending..." else "Submit")
+                            Text(if (formState.isLoading) stringResource(R.string.sending) else stringResource(R.string.submit_button))
                         }
 
                         Button(
@@ -188,7 +190,7 @@ fun RequestForm(
                                 containerColor = MaterialTheme.colorScheme.secondary
                             )
                         ) {
-                            Text("View Requests")
+                            Text(stringResource(R.string.view_requests_button))
                         }
                     }
                 }

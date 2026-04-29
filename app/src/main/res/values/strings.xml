@@ -1,12 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <resources>
-        <string name="app_name">Requests App</string>
+<resources>
+    <string name="app_name">Requests App</string>
 
-        <string name="titulo_label">Title (5–60 characters)</string>
-        <string name="descripcion_label">Description (20–500 characters)</string>
-        <string name="categoria_label">Category</string>
-        <string name="prioridad_label">Priority</string>
-        <string name="enviar_button">Submit</string>
-        <string name="mis_solicitudes_button">All Requests</string>
-        <string name="enviando">Sending…</string>
-    </resources>
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_subtitle">Submit your requests quickly and easily</string>
+    <string name="welcome_button">Start Request</string>
+    <string name="form_illustration">Form illustration</string>
+
+    <!-- Request Form -->
+    <string name="new_request">New Request</string>
+    <string name="go_back">Go back</string>
+    <string name="title_label">Title</string>
+    <string name="description_label">Description</string>
+    <string name="category_label">Category</string>
+    <string name="priority_label">Priority</string>
+    <string name="email_label">Email</string>
+    <string name="submit_button">Submit</string>
+    <string name="view_requests_button">View Requests</string>
+    <string name="sending">Sending…</string>
+
+    <!-- Validation Messages -->
+    <string name="title_validation">Must be between 5 and 60 characters</string>
+    <string name="title_min_chars">Minimum 5 characters</string>
+    <string name="title_max_chars">Maximum 60 characters</string>
+    <string name="description_validation">Must be between 20 and 500 characters</string>
+    <string name="description_min_chars">Minimum 20 characters</string>
+    <string name="description_max_chars">Maximum 500 characters</string>
+    <string name="email_validation">Please enter a valid email</string>
+    <string name="email_required">Email is required</string>
+    <string name="email_invalid_format">Invalid email format</string>
+    <string name="priority_range">Priority 1-5</string>
+    <string name="form_incomplete">Please complete all fields correctly</string>
+
+    <!-- Categories -->
+    <string name="category_support">Support</string>
+    <string name="category_inquiry">Inquiry</string>
+    <string name="category_complaint">Complaint</string>
+    <string name="category_suggestion">Suggestion</string>
+    <string name="category_other">Other</string>
+
+    <!-- Priority -->
+    <string name="priority_value">Priority: %d</string>
+    <string name="priority_level">Level %d</string>
+
+    <!-- Request Card -->
+    <string name="card_description">Description</string>
+    <string name="card_category">Category</string>
+    <string name="card_email">Email</string>
+    <string name="card_date">Date</string>
+    <string name="card_priority">Priority</string>
+    <string name="card_priority_level">Level %1$d</string>
+    <string name="not_specified">Not specified</string>
+    <string name="no_date">No date</string>
+
+    <!-- Request List -->
+    <string name="all_requests">All Requests</string>
+    <string name="refresh">Refresh</string>
+    <string name="no_requests_found">No requests found</string>
+    <string name="no_requests_for_date">No requests for the selected date range</string>
+    
+    <!-- Date Filter -->
+    <string name="filter_by_date">Filter by date</string>
+    <string name="filter_all">All</string>
+    <string name="filter_today">Today</string>
+    <string name="filter_last_7_days">Last 7 days</string>
+    <string name="filter_this_month">This month</string>
+    <string name="filter_custom_label">Filter by date (YYYY‑MM‑DD)</string>
+    <string name="filter_custom_placeholder">Ex: 2024–04–29</string>
+    <string name="filter_date_icon">Date</string>
+    <string name="filter_delete_date">Delete date</string>
+    <string name="filter_invalid_format">Invalid format. Use YYYY-MM-DD</string>
+
+    <!-- Error Dialog -->
+    <string name="error_title">Error</string>
+    <string name="error_retry">Retry</string>
+    <string name="error_close">Close</string>
+    <string name="error_timeout">Connection timed out. Please try again.</string>
+    <string name="error_network">Connection error. Please check your internet connection.</string>
+    <string name="error_server">Server is unavailable. Please try again later.</string>
+    <string name="error_auth">Authentication error. Please verify your credentials.</string>
+    <string name="error_not_found">Resource not found.</string>
+    <string name="error_unexpected">An unexpected error occurred. Please try again.</string>
+    <string name="error_generic">Unknown error occurred</string>
+
+    <!-- Success Messages -->
+    <string name="request_submitted">Request submitted successfully</string>
+    <string name="requests_load_failed">Failed to load requests</string>
+
+    <!-- Repository error messages -->
+    <string name="error_no_response">No response received from the server</string>
+    <string name="error_insert_failed">Error inserting request: %1$s</string>
+    <string name="error_load_failed">Error loading requests: %1$s</string>
+    <string name="error_unknown">Unknown error</string>
+</resources>

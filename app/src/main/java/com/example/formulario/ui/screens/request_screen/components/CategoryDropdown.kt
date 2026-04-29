@@ -14,7 +14,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.formulario.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -22,7 +24,13 @@ fun CategoryDropdown(
     selectedCategory: String,
     onCategoryChange: (String) -> Unit
 ) {
-    val categories = listOf("Support", "Inquiry", "Complaint", "Suggestion", "Other")
+    val categories = listOf(
+        stringResource(R.string.category_support),
+        stringResource(R.string.category_inquiry),
+        stringResource(R.string.category_complaint),
+        stringResource(R.string.category_suggestion),
+        stringResource(R.string.category_other)
+    )
     var expanded by remember { mutableStateOf(false) }
 
     ExposedDropdownMenuBox(
@@ -32,7 +40,7 @@ fun CategoryDropdown(
         OutlinedTextField(
             value = selectedCategory,
             onValueChange = {},
-            label = { Text("Category") },
+            label = { Text(stringResource(R.string.category_label)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .menuAnchor(),

@@ -1,9 +1,12 @@
 package com.example.formulario.di
 
+import android.content.Context
+import com.example.formulario.BuildConfig
 import com.example.formulario.data.repository.RequestRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
@@ -18,9 +21,13 @@ object SupabaseModule {
     @Provides
     @Singleton
     fun provideSupabaseClient(): SupabaseClient {
+        // Get configuration from BuildConfig (loaded from local.properties)
+        val supabaseUrl = BuildConfig.SUPABASE_URL
+        val supabaseKey = BuildConfig.SUPABASE_KEY
+        
         return createSupabaseClient(
-            supabaseUrl = "https://jgndwpyaptgrwlbtkwhe.supabase.co",
-            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbmR3cHlhcHRncndsYnRrd2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDY0MTEsImV4cCI6MjA5MjgyMjQxMX0.XdxDi8fECXQehXjBkHUmxaL7iEE280UCFRV61aetamA"
+            supabaseUrl = supabaseUrl,
+            supabaseKey = supabaseKey
         ) {
             httpEngine = OkHttp.create()
 
@@ -31,8 +38,9 @@ object SupabaseModule {
     @Provides
     @Singleton
     fun provideRequestRepository(
-        supabaseClient: SupabaseClient
+        supabaseClient: SupabaseClient,
+        @ApplicationContext context: Context
     ): RequestRepository {
-        return RequestRepository(supabaseClient)
+        return RequestRepository(supabaseClient, context)
     }
 }

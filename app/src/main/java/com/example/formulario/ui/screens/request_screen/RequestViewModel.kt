@@ -1,12 +1,15 @@
 package com.example.formulario.ui.screens.request_screen
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.formulario.R
 import com.example.formulario.data.model.FormState
 import com.example.formulario.data.model.Request
 import com.example.formulario.data.repository.RequestRepository
 import com.example.formulario.domain.validation.FormValidator
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -15,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RequestViewModel @Inject constructor(
-    private val repository: RequestRepository
+    private val repository: RequestRepository,
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     private val _formState = MutableStateFlow(FormState())
@@ -50,9 +54,9 @@ class RequestViewModel @Inject constructor(
 
         if (currentState.isLoading) return
 
-        if (!FormValidator.validateForm(currentState)) {
+        if (!FormValidator.validateForm(currentState, context)) {
             _formState.update {
-                it.copy(errorMessage = "Please complete all fields correctly")
+                it.copy(errorMessage = context.getString(R.string.form_incomplete))
             }
             return
         }
@@ -75,7 +79,7 @@ class RequestViewModel @Inject constructor(
                 _formState.update {
                     it.copy(
                         isLoading = false,
-                        successMessage = "Request submitted successfully"
+                        successMessage = context.getString(R.string.request_submitted)
                     )
                 }
 
@@ -86,7 +90,7 @@ class RequestViewModel @Inject constructor(
                 _formState.update {
                     it.copy(
                         isLoading = false,
-                        errorMessage = exception.message ?: "Unknown error occurred"
+                        errorMessage = exception.message ?: context.getString(R.string.error_generic)
                     )
                 }
             }
@@ -109,7 +113,7 @@ class RequestViewModel @Inject constructor(
                 _formState.update {
                     it.copy(
                         isLoading = false,
-                        errorMessage = exception.message ?: "Failed to load requests"
+                        errorMessage = exception.message ?: context.getString(R.string.requests_load_failed)
                     )
                 }
             }

@@ -8,24 +8,31 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
+import androidx.compose.material3.DividerDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.formulario.R
 import com.example.formulario.data.model.Request
 
 
 @Composable
 fun RequestCard(request: Request) {
 
+
     val priorityColor = when (request.priority) {
-        1 -> MaterialTheme.colorScheme.tertiary
-        2 -> MaterialTheme.colorScheme.primary
-        3 -> MaterialTheme.colorScheme.error
-        else -> MaterialTheme.colorScheme.secondary
+        1 -> Color(0xFFA5D6A7)
+        2 -> Color(0xFFFFF59D)
+        3 -> Color(0xFFCE93D8)
+        4 -> Color(0xFFFFAB91)
+        5 -> Color(0xFFEF9A9A)
+        else -> Color(0xFFB0BEC5)
     }
 
     Card(
@@ -33,7 +40,7 @@ fun RequestCard(request: Request) {
             .fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
         elevation = CardDefaults.cardElevation(6.dp)
     ) {
@@ -44,28 +51,29 @@ fun RequestCard(request: Request) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
 
-            // TITLE
             Text(
                 text = request.title,
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onSurface
+                color = MaterialTheme.colorScheme.primary
             )
 
-            Divider(color = MaterialTheme.colorScheme.outlineVariant)
+            HorizontalDivider(
+                Modifier,
+                DividerDefaults.Thickness,
+                color = MaterialTheme.colorScheme.outlineVariant
+            )
 
-            // MAIN INFORMATION
-            InfoRow("Description", request.description)
-            InfoRow("Category", request.category)
-            InfoRow("Email", request.email)
-            InfoRow("Date", formatDate(request.createdAt))
+            InfoRow(stringResource(R.string.card_description), request.description)
+            InfoRow(stringResource(R.string.card_category), request.category)
+            InfoRow(stringResource(R.string.card_email), request.email)
+            InfoRow(stringResource(R.string.card_date), formatDate(request.createdAt))
 
-            // HIGHLIGHTED PRIORITY
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Priority",
+                    text = stringResource(R.string.card_priority),
                     style = MaterialTheme.typography.labelLarge
                 )
 
@@ -74,7 +82,7 @@ fun RequestCard(request: Request) {
                     color = priorityColor.copy(alpha = 0.15f)
                 ) {
                     Text(
-                        text = "Level ${request.priority}",
+                        text = stringResource(R.string.card_priority_level, request.priority),
                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                         color = priorityColor,
                         style = MaterialTheme.typography.labelMedium
@@ -90,11 +98,11 @@ fun InfoRow(label: String, value: String?) {
     Column {
         Text(
             text = label,
-            style = MaterialTheme.typography.labelMedium,
+            style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.primary
         )
         Text(
-            text = value ?: "Not specified",
+            text = value ?: stringResource(R.string.not_specified),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurface
         )

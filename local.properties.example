@@ -1,0 +1,14 @@
+## This file is a template for local.properties
+## Copy this file to local.properties and fill in your actual values
+## local.properties is gitignored and will not be committed to version control
+
+# Location of the SDK. This is only used by Gradle.
+# For customization when using a Version Control System, please read the
+# header note.
+#sdk.dir=C\:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk
+
+# Supabase Configuration
+# Get these values from your Supabase project dashboard
+# https://supabase.com/dashboard/project/YOUR_PROJECT/settings/api
+SUPABASE_URL=your_supabase_url_here
+SUPABASE_KEY=your_supabase_anon_key_here

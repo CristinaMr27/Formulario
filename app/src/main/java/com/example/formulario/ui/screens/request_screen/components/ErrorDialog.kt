@@ -9,6 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import com.example.formulario.R
 
 @Composable
 fun ErrorDialog(
@@ -18,16 +20,16 @@ fun ErrorDialog(
 ) {
     val simplifiedMessage = when {
         message.contains("timeout", ignoreCase = true) || message.contains("timed out", ignoreCase = true) -> 
-            "Connection timed out. Please try again."
+            stringResource(R.string.error_timeout)
         message.contains("network", ignoreCase = true) || message.contains("connection", ignoreCase = true) -> 
-            "Connection error. Please check your internet connection."
+            stringResource(R.string.error_network)
         message.contains("server", ignoreCase = true) || message.contains("500", ignoreCase = true) -> 
-            "Server is unavailable. Please try again later."
+            stringResource(R.string.error_server)
         message.contains("unauthorized", ignoreCase = true) || message.contains("401", ignoreCase = true) -> 
-            "Authentication error. Please verify your credentials."
+            stringResource(R.string.error_auth)
         message.contains("not found", ignoreCase = true) || message.contains("404", ignoreCase = true) -> 
-            "Resource not found."
-        else -> "An unexpected error occurred. Please try again."
+            stringResource(R.string.error_not_found)
+        else -> stringResource(R.string.error_unexpected)
     }
 
     AlertDialog(
@@ -35,24 +37,24 @@ fun ErrorDialog(
         icon = {
             Icon(
                 imageVector = Icons.Default.Warning,
-                contentDescription = "Error",
+                contentDescription = stringResource(R.string.error_title),
                 tint = MaterialTheme.colorScheme.error
             )
         },
         title = {
-            Text(text = "Error")
+            Text(text = stringResource(R.string.error_title))
         },
         text = {
             Text(text = simplifiedMessage)
         },
         confirmButton = {
             TextButton(onClick = onRetry) {
-                Text("Retry")
+                Text(stringResource(R.string.error_retry))
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Close")
+                Text(stringResource(R.string.error_close))
             }
         }
     )

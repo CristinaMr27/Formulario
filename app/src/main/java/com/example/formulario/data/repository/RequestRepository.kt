@@ -1,11 +1,16 @@
 package com.example.formulario.data.repository
 
+import android.content.Context
+import com.example.formulario.R
 import com.example.formulario.data.model.Request
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Order
 
-class RequestRepository(private val supabase: SupabaseClient) {
+class RequestRepository(
+    private val supabase: SupabaseClient,
+    private val context: Context
+) {
 
     suspend fun insertRequest(request: Request): Result<Request> {
         return try {
@@ -19,10 +24,13 @@ class RequestRepository(private val supabase: SupabaseClient) {
             if (response.isNotEmpty()) {
                 Result.success(response.first())
             } else {
-                Result.failure(Exception("No response received from server"))
+                Result.failure(Exception(context.getString(R.string.error_no_response)))
             }
         } catch (e: Exception) {
-            Result.failure(Exception("Failed to insert request: ${e.message ?: "Unknown error"}", e))
+            Result.failure(Exception(
+                context.getString(R.string.error_insert_failed, e.message ?: context.getString(R.string.error_unknown)),
+                e
+            ))
         }
     }
 
@@ -37,7 +45,10 @@ class RequestRepository(private val supabase: SupabaseClient) {
 
             Result.success(requests)
         } catch (e: Exception) {
-            Result.failure(Exception("Failed to load requests: ${e.message ?: "Unknown error"}", e))
+            Result.failure(Exception(
+                context.getString(R.string.error_load_failed, e.message ?: context.getString(R.string.error_unknown)),
+                e
+            ))
         }
     }
 }

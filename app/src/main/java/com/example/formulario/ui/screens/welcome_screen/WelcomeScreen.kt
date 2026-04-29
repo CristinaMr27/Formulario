@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.formulario.R
 
@@ -43,7 +44,7 @@ fun WelcomeScreen(
 
         ) {
             Text(
-                text = "Welcome",
+                text = stringResource(R.string.welcome_title),
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.primary
             )
@@ -51,7 +52,7 @@ fun WelcomeScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "Submit your requests quickly and easily",
+                text = stringResource(R.string.welcome_subtitle),
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.Gray
             )
@@ -59,7 +60,7 @@ fun WelcomeScreen(
 
         Image(
             painter = painterResource(id = R.drawable.imagen_pantalla_principal),
-            contentDescription = "Form illustration",
+            contentDescription = stringResource(R.string.form_illustration),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(260.dp),
@@ -76,7 +77,7 @@ fun WelcomeScreen(
                 containerColor = MaterialTheme.colorScheme.primary
             )
         ) {
-            Text("Start Request")
+            Text(stringResource(R.string.welcome_button))
         }
 
         Spacer(modifier = Modifier.height(20.dp))
